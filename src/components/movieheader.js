@@ -17,7 +17,7 @@ class MovieHeader extends Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            Gavin's Homework 5
+                            Movie App
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
@@ -27,21 +27,14 @@ class MovieHeader extends Component {
                         <LinkContainer to={'/movie/'+ (this.props.selectedMovie ? this.props.selectedMovie._id : '')}>
                             <NavItem eventKey={2} disabled={!this.props.loggedIn}>Movie Detail</NavItem>
                         </LinkContainer>
-                        <LinkContainer to="/search">
-                            <NavItem eventKey={4} disabled={!this.props.loggedIn}>Search</NavItem>
-                        </LinkContainer>
                         <LinkContainer to="/signin">
-                            <NavItem eventKey={3}>{this.props.loggedIn ? <button onClick={this.logout.bind(this)}>
-                                Logout
-                            </button> : 'Login'}</NavItem>
+                            <NavItem eventKey={3}>{this.props.loggedIn ? <button onClick={this.logout.bind(this)}>Logout</button> : 'Login'}</NavItem>
                         </LinkContainer>
                     </Nav>
                 </Navbar>
-                <header className="App-header">
-                    <h1 className="App-title" style={{'fontSize': '40px'}}>
-                        {(this.props.selectedMovie ? this.props.selectedMovie.title : '')}
-                    </h1>
-                </header>
+                {/*<header className="App-header">*/}
+                {/*    <h1 className="App-title">{(this.props.selectedMovie ? this.props.selectedMovie.title : '')}</h1>*/}
+                {/*</header>*/}
             </div>
 
         );
@@ -52,7 +45,7 @@ const mapStateToProps = state => {
     return {
         loggedIn: state.auth.loggedIn,
         username: state.auth.username,
-        selectedMovie: state.movie.selectedMovie,
+        selectedMovie: ''//state.movie.selectedMovie,
     }
 }
 
