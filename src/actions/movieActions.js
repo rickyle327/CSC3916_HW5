@@ -75,29 +75,3 @@ export function fetchMovie(movieId){
             .catch( (e) => console.log(e) );
     }
 }
-
-export function postReview(data){
-    const env = runtimeEnv();
-    return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/reviews`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token')
-            },
-            body: JSON.stringify(data),
-            mode: 'cors'})
-            .then( (response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then( (res) => {
-                console.log(res.json());
-                // fetchMovie(JSON.stringify(data).movieId);
-            })
-            .catch( (e) => console.log(e) );
-    }
-}
